@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card shadow p-4 mx-auto mt-5" style="max-width: 600px;">
+  <h3 class="text-center mb-3 text-success">🎟️ Ticket Generated Successfully!</h3>
+  <p><strong>Ticket Number:</strong> {{ ticket_no }}</p>
+  <p><strong>Passenger Name:</strong> {{ ticket.passenger_name }}</p>
+  <p><strong>Train Name:</strong> {{ ticket.train_name }}</p>
+  <p><strong>Train Number:</strong> {{ ticket.train_no }}</p>
+  <p><strong>From:</strong> {{ ticket.source }}</p>
+  <p><strong>To:</strong> {{ ticket.destination }}</p>
+  <p><strong>Arrival Time:</strong> {{ ticket.arrival_time }}</p>
+  <p><strong>Destination Time:</strong> {{ ticket.destination_time }}</p>
+  <p><strong>Seats Booked:</strong> {{ ticket.seats_booked }}</p>
+  <p><strong>Total Fare:</strong> ₹{{ ticket.total_fare }}</p>
+  <div class="text-center mt-4">
+    <a href="/my_bookings" class="btn btn-dark">View My Bookings</a>
+  </div>
+</div>
+{% endblock %}

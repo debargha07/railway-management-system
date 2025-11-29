@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="railway.db" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser pragmas query" current="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="1559"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><table title="booking" custom_title="0" dock_id="1" table="4,7:mainbooking"/><dock_state state="000000ff00000000fd00000001000000020000000000000000fc0100000001fb000000160064006f0063006b00420072006f00770073006500310100000000ffffffff0000011300ffffff000000000000000000000004000000040000000800000008fc00000000"/><default_encoding codec=""/><browse_table_settings/></tab_browse><tab_sql><sql name="SQL 1*">-- Drop old tables if they exist (optional cleanup)
+DROP TABLE IF EXISTS booking;
+DROP TABLE IF EXISTS train;
+
+-- Create Train Table
+CREATE TABLE train (
+    train_no INTEGER PRIMARY KEY,
+    train_name TEXT NOT NULL,
+    source TEXT NOT NULL,
+    destination TEXT NOT NULL,
+    total_seats INTEGER NOT NULL,
+    fare INTEGER NOT NULL,
+    arrival_time TEXT,
+    destination_time TEXT
+);
+
+-- Create Booking Table
+CREATE TABLE booking (
+    booking_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    passenger_name TEXT NOT NULL,
+    train_no INTEGER NOT NULL,
+    seats_booked INTEGER NOT NULL,
+    total_fare INTEGER NOT NULL,
+    FOREIGN KEY (train_no) REFERENCES train(train_no)
+);
+
+-- Insert 10 Sample Train Records
+INSERT INTO train (train_no, train_name, source, destination, total_seats, fare, arrival_time, destination_time) VALUES
+(12001, 'Shatabdi Express', 'Kolkata', 'Delhi', 120, 1450, '06:00 AM', '02:30 PM'),
+(12345, 'Howrah Rajdhani', 'Howrah', 'New Delhi', 100, 2000, '04:55 PM', '10:05 AM'),
+(22691, 'Bangalore Express', 'Chennai', 'Bangalore', 150, 600, '07:30 AM', '12:45 PM'),
+(12479, 'Goa Sampark Kranti', 'Delhi', 'Goa', 130, 1800, '10:00 PM', '03:30 PM'),
+(12841, 'Coromandel Express', 'Howrah', 'Chennai', 160, 1500, '08:00 AM', '09:15 PM'),
+(12627, 'Karnataka Express', 'Bangalore', 'Delhi', 140, 1700, '06:15 AM', '11:45 PM'),
+(12321, 'Udyan Abha Toofan Express', 'Kolkata', 'Jammu Tawi', 110, 2200, '09:45 AM', '07:30 AM'),
+(12560, 'Shiv Ganga Express', 'Varanasi', 'New Delhi', 100, 900, '05:30 PM', '07:00 AM'),
+(12414, 'Jammu Tawi Express', 'Delhi', 'Jammu', 90, 800, '01:00 PM', '08:00 PM'),
+(12245, 'Duronto Express', 'Sealdah', 'New Delhi', 100, 1950, '08:15 PM', '02:15 PM');
+</sql><current_tab id="0"/></tab_sql></sqlb_project>

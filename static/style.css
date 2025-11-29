@@ -1,0 +1,33 @@
+body {
+    background: linear-gradient(135deg, #1f1c2c, #928dab);
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+}
+
+.hero {
+    padding: 120px 20px;
+    background: url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fstock.adobe.com%2Fsearch%3Fk%3Dblue%2Bbackground&psig=AOvVaw36n0IprJHN7HAjj3cT8FPt&ust=1762431168156000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCLDV2fH92pADFQAAAAAdAAAAABAE') center/cover;
+    color: white;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+}
+
+.table {
+    background-color: white;
+    color: black;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+footer {
+    font-size: 0.9rem;
+}

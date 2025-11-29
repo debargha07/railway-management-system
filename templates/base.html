@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Railway Reservation System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            background: linear-gradient(135deg, #1e293b, #334155);
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+        }
+        nav.navbar {
+            background: #0f172a !important;
+        }
+        .nav-link {
+            color: #e2e8f0 !important;
+            font-weight: 500;
+        }
+        .nav-link:hover {
+            color: #38bdf8 !important;
+        }
+        .container {
+            margin-top: 40px;
+        }
+        footer {
+            background: #0f172a;
+            color: #e2e8f0;
+            text-align: center;
+            padding: 15px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .navbar-brand {
+            color: #38bdf8 !important;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="/">🚆 Railway System</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div id="navbarNav" class="collapse navbar-collapse">
+               <ul class="navbar-nav ms-auto">
+    {% if session.get('user') %}
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('view_trains') }}">View Trains</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('my_bookings') }}">My Bookings</a></li>
+        <li class="nav-item"><a class="nav-link text-danger" href="{{ url_for('logout') }}">Logout ({{ session['user'] }})</a></li>
+    {% else %}
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('login') }}">Login</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('signup') }}">Sign Up</a></li>
+    {% endif %}
+</ul>
+
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p class="mb-0">&copy; 2025 Railway Reservation | Developed by <strong>Debargha Pal</strong></p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

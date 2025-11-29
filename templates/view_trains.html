@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="mb-4 text-center">Available Trains</h2>
+
+<table class="table table-striped table-hover text-center shadow">
+    <thead class="table-dark">
+        <tr>
+            <th>Train No</th>
+            <th>Name</th>
+            <th>Source</th>
+            <th>Destination</th>
+            <th>Arrival</th>
+            <th>Destination Time</th>
+            <th>Seats</th>
+            <th>Fare</th>
+            <th>Book</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for t in trains %}
+        <tr>
+            <td>{{ t.train_no }}</td>
+            <td>{{ t.train_name }}</td>
+            <td>{{ t.source }}</td>
+            <td>{{ t.destination }}</td>
+            <td>{{ t.arrival_time }}</td>
+            <td>{{ t.destination_time }}</td>
+            <td>{{ t.total_seats }}</td>
+            <td>₹{{ t.fare }}</td>
+            <td>
+                <a href="/book_ticket?train_no={{ t.train_no }}" class="btn btn-success btn-sm">Book</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="text-center hero p-5">
+    <h1 class="display-5 fw-bold mb-4 text-light">🚆 Welcome to Railway Reservation System</h1>
+    <p class="lead mb-4 text-light">Book your journey with ease and view your tickets instantly!</p>
+    {% if session.get('user') %}
+        <a href="{{ url_for('view_trains') }}" class="btn btn-primary btn-lg me-3">View Trains</a>
+        <a href="{{ url_for('my_bookings') }}" class="btn btn-outline-light btn-lg">My Bookings</a>
+    {% else %}
+        <a href="{{ url_for('login') }}" class="btn btn-primary btn-lg me-3">Login</a>
+        <a href="{{ url_for('signup') }}" class="btn btn-outline-light btn-lg">Sign Up</a>
+    {% endif %}
+</div>
+{% endblock %}
+
