@@ -85,7 +85,7 @@ def book_ticket_page():
 @app.route('/book', methods=['POST'])
 def book_ticket():
     if 'user' not in session:
-        return redirect(url_for('login'))
+        return redirect(url_for('home'))
 
     name = session['user']  # Logged-in username
     train_no = request.form['train_no']
