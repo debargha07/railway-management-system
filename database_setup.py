@@ -2,8 +2,6 @@ import sqlite3
 
 conn = sqlite3.connect('railway.db')
 c = conn.cursor()
-
-# Train table
 c.execute('''
 CREATE TABLE IF NOT EXISTS train (
     train_no INTEGER PRIMARY KEY,
@@ -15,7 +13,6 @@ CREATE TABLE IF NOT EXISTS train (
 )
 ''')
 
-# Booking table
 c.execute('''
 CREATE TABLE IF NOT EXISTS booking (
     booking_id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -26,7 +23,6 @@ CREATE TABLE IF NOT EXISTS booking (
     FOREIGN KEY(train_no) REFERENCES train(train_no)
 )
 ''')
-
 conn.commit()
 conn.close()
-print("✅ Database created successfully!")
+print("Database  successfully!")
